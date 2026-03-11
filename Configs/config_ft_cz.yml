@@ -1,0 +1,72 @@
+log_dir: "Models/FT_CZ"
+save_freq: 1
+log_interval: 10
+device: "cuda"
+epochs: 50
+batch_size: 4
+max_len: 200 # maximum number of frames
+
+preprocess_params:
+  sr: 24000
+  spectrogram_params:
+    n_fft: 2048
+    win_length: 1200
+    hop_length: 300
+
+model_params:
+  multispeaker: true
+  dim_in: 64
+  hidden_dim: 512
+  n_layer: 6
+  n_mels: 80
+  n_style_adv: 4
+  
+  slm:
+    model: 'Utils/ASR/checkpoints/joint_v2.pth'
+    sr: 16000 # sr of the SLM model
+  
+  diffusion:
+    embedding_mask_proba: 0.1
+    dist:
+      estimate_sigma_data: true # estimate sigma_data from the current batch
+      mean: -3.0
+      std: 1.0
+      sigma_data: 0.14 # default sigma_data next to the original value
+
+loss_params:
+    lambda_mel: 5.0 # mel-reconstruction loss
+    lambda_gen: 1.0 # generator loss
+    lambda_slm: 1.0 # SLM loss
+    lambda_mono: 1.0 # monotonic alignment loss (for text-aligner)
+    lambda_s2s: 1.0 # sequence-to-sequence loss (for text-aligner)
+    lambda_F0: 1.0 # F0 reconstruction loss
+    lambda_norm: 1.0 # norm reconstruction loss
+    lambda_dur: 1.0 # duration loss
+    lambda_sty: 1.0 # style reconstruction loss
+    lambda_diff: 1.0 # diffusion loss
+    lambda_kl: 1.0 # KL divergence loss
+    
+    diff_epoch: 0
+    joint_epoch: 0
+
+optimizer_params:
+  lr: 0.0001
+  bert_lr: 0.00001
+  ft_lr: 0.0001
+
+data_params:
+  train_data: "Data/train_list.txt"
+  val_data: "Data/val_list.txt"
+  root_path: "Data/wavs"
+  OOD_data: "Data/OOD_texts.txt"
+  min_length: 50 # min length of mel frames
+
+# Pretrained Models
+ASR_config: "StyleTTS2/Utils/ASR/config.yml"
+ASR_path: "StyleTTS2/Utils/ASR/checkpoints/joint_v2.pth"
+F0_path: "StyleTTS2/Utils/JDC/bst.t7"
+PLBERT_dir: "StyleTTS2/Utils/PLBERT/"
+
+pretrained_model: "StyleTTS2/Models/LibriTTS/epochs_2nd_00020.pth"
+second_stage_load_pretrained: true
+load_only_params: true
