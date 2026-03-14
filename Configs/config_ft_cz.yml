@@ -18,7 +18,7 @@ model_params:
   dim_in: 64 
   hidden_dim: 512
   max_conv_dim: 512
-  n_layer: 3 # Changed to match LibriTTS config
+  n_layer: 3 # Matched to LibriTTS
   n_mels: 80
   n_token: 178 # number of phoneme tokens
   max_dur: 50 # maximum duration of a single phoneme
@@ -75,6 +75,15 @@ optimizer_params:
   lr: 0.0001
   bert_lr: 0.00001
   ft_lr: 0.0001
+
+slmadv_params:
+  min_len: 400
+  max_len: 500
+  batch_percentage: 0.5
+  iter: 10
+  thresh: 5
+  scale: 0.01
+  sig: 1.5
 
 data_params:
   train_data: "../Data/train_list.txt"
