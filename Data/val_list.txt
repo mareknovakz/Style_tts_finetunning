@@ -1,1 +1,5 @@
-test_sample.wav|pˈokusniː tˈekst prˈotest. |0
+sample_000000.wav|vˈaːʒeɲiː pˈaɲiː pˈoslaŋkˌiɲe, vˈaːʒeɲiː pˈaːɲi pˈoslantsi, vˈaːʒeɲiː tʃlˈenoveː vlˈaːdi, mˈiliː hˈosteː. |unknown
+sample_000020.wav|pˈan pˈoslanets pˈavel hˈoliːk. |unknown
+sample_000040.wav|pˈan pˈoslanets rˈoman kˈubiːtʃek. |unknown
+sample_000060.wav|pˈan pˈoslanets mˈilan ʃˈarapˌatka. |unknown
+sample_000080.wav|je tˈo nˈazaːklˌaɟe pˈaraɡraf tʃtˈir̝itsetsˈedum ˈotst. dvˈa jˈednatsˌiːho r̝ˈaːdu a tʃlˈaːŋku jˈeden bˈot sˈedum vˈolebɲˌiːho r̝ˈaːdu. |unknown
