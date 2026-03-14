@@ -55,10 +55,10 @@ optimizer_params:
   ft_lr: 0.0001
 
 data_params:
-  train_data: "Data/train_list.txt"
-  val_data: "Data/val_list.txt"
-  root_path: "Data/wavs"
-  OOD_data: "Data/OOD_texts.txt"
+  train_data: "../Data/train_list.txt"
+  val_data: "../Data/val_list.txt"
+  root_path: "../Data/wavs"
+  OOD_data: "../Data/OOD_texts.txt"
   min_length: 50 # min length of mel frames
 
 # Pretrained Models
