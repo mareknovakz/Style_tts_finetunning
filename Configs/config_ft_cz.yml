@@ -18,7 +18,7 @@ model_params:
   dim_in: 64 
   hidden_dim: 512
   max_conv_dim: 512
-  n_layer: 6 
+  n_layer: 3 # Changed to match LibriTTS config
   n_mels: 80
   n_token: 178 # number of phoneme tokens
   max_dur: 50 # maximum duration of a single phoneme
@@ -27,14 +27,12 @@ model_params:
   n_style_adv: 4
 
   decoder: 
-      type: 'istftnet' # either hifigan or istftnet
+      type: 'hifigan' # Matched to LibriTTS
       resblock_kernel_sizes: [3,7,11]
-      upsample_rates :  [10, 6]
+      upsample_rates : [10, 5, 3, 2]
       upsample_initial_channel: 512
       resblock_dilation_sizes: [[1,3,5], [1,3,5], [1,3,5]]
-      upsample_kernel_sizes: [20, 12]
-      gen_istft_n_fft: 20
-      gen_istft_hop_size: 5
+      upsample_kernel_sizes: [20, 10, 6, 4]
       
   slm:
       model: 'microsoft/wavlm-base-plus'
@@ -51,7 +49,7 @@ model_params:
       head_features: 64
       multiplier: 2
     dist:
-      sigma_data: 0.2 
+      sigma_data: 0.19926648961191362 
       estimate_sigma_data: true
       mean: -3.0
       std: 1.0
