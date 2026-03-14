@@ -4,9 +4,10 @@ import sys
 api = HfApi()
 repos = [
     'yl4579/StyleTTS2-LibriTTS',
-    'mrfakename/StyleTTS2-LibriTTS',
-    'mrfakename/StyleTTS-2-Demo',
-    'yl4579/StyleTTS2-LJSpeech'
+    'TandemApp/StyleTTS2',
+    'CapybaraStyle/StyleTTS2',
+    'mishtal/StyleTTS2',
+    'mrfakename/StyleTTS2-LibriTTS'
 ]
 
 for repo in repos:
@@ -21,7 +22,9 @@ for repo in repos:
                 name = f.rfilename
             
             if name:
-                # Print all files to see the structure
-                print(f"  {name}")
+                 # Filter to find weights
+                 nl = name.lower()
+                 if "joint_v2.pth" in nl or "bst.t7" in nl or "pytorch_model.bin" in nl or "epochs_2nd" in nl:
+                     print(f"  [FOUND] {name}")
     except Exception as e:
         print(f"  Error: {e}")
