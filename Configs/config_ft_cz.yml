@@ -62,11 +62,11 @@ data_params:
   min_length: 50 # min length of mel frames
 
 # Pretrained Models
-ASR_config: "StyleTTS2/Utils/ASR/config.yml"
-ASR_path: "StyleTTS2/Utils/ASR/checkpoints/joint_v2.pth"
-F0_path: "StyleTTS2/Utils/JDC/bst.t7"
-PLBERT_dir: "StyleTTS2/Utils/PLBERT/"
+ASR_config: "Utils/ASR/config.yml"
+ASR_path: "Utils/ASR/checkpoints/joint_v2.pth"
+F0_path: "Utils/JDC/bst.t7"
+PLBERT_dir: "Utils/PLBERT/"
 
-pretrained_model: "StyleTTS2/Models/LibriTTS/epochs_2nd_00020.pth"
+pretrained_model: "Models/LibriTTS/epochs_2nd_00020.pth"
 second_stage_load_pretrained: true
 load_only_params: true
