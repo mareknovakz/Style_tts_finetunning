@@ -4,9 +4,9 @@ import sys
 api = HfApi()
 repos = [
     'yl4579/StyleTTS2-LibriTTS',
-    'TandemApp/StyleTTS2',
-    'OedoSoldier/StyleTTS2',
-    'mishtal/StyleTTS2'
+    'mrfakename/StyleTTS2-LibriTTS',
+    'mrfakename/StyleTTS-2-Demo',
+    'yl4579/StyleTTS2-LJSpeech'
 ]
 
 for repo in repos:
@@ -20,7 +20,8 @@ for repo in repos:
             elif hasattr(f, 'rfilename'):
                 name = f.rfilename
             
-            if name and any(x in name.lower() for x in ["joint_v2.pth", "bst.t7", "pytorch_model.bin", "epochs_2nd"]):
-                print(f"  [FOUND] {name}")
+            if name:
+                # Print all files to see the structure
+                print(f"  {name}")
     except Exception as e:
         print(f"  Error: {e}")
