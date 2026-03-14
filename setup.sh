@@ -4,8 +4,13 @@
 echo "Setting up StyleTTS2 Czech Finetuning environment..."
 
 # 1. Update and install system dependencies
-sudo apt-get update
-sudo apt-get install -y espeak-ng git-lfs
+if command -v sudo >/dev/null 2>&1; then
+    sudo apt-get update
+    sudo apt-get install -y espeak-ng git-lfs ffmpeg
+else
+    apt-get update
+    apt-get install -y espeak-ng git-lfs ffmpeg
+fi
 
 # 2. Clone the original StyleTTS2 if it doesn't exist (as a submodule or reference)
 if [ ! -d "StyleTTS2" ]; then
