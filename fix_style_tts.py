@@ -20,7 +20,7 @@ def patch_file(filename):
         content = content.replace('if __name__=="__main__":', 'if __name__ == "__main__":')
     
     old_main = 'if __name__ == "__main__":\n    main()'
-    new_main = 'if __name__ == "__main__":\n    try:\n        main()\n    except Exception as e:\n        import traceback\n        traceback.print_exc()\n        raise e'
+    new_main = 'if __name__ == "__main__":\n    try:\n        print("--- [STARTING MAIN] ---")\n        main()\n    except Exception as e:\n        import traceback\n        traceback.print_exc()\n        raise e'
     
     if old_main in content:
         content = content.replace(old_main, new_main)
