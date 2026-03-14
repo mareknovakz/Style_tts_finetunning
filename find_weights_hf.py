@@ -4,16 +4,18 @@ import os
 api = HfApi()
 
 def find_files():
-    print("Searching for yl4579 models...")
-    models = api.list_models(author='yl4579')
+    print("Searching for StyleTTS2 related models...")
+    models = api.list_models(search='StyleTTS2')
+    count = 0
     for model in models:
-        # Check files in each model
-        # Note: list_repo_files for models
+        count += 1
+        if count > 20: break
+        print(f"Checking {model.modelId}...")
         try:
             files = api.list_repo_files(repo_id=model.modelId)
             for file in files:
                 if 'joint_v2.pth' in file or 'bst.t7' in file:
-                    print(f"FOUND {file} in {model.modelId}")
+                    print(f"  [FOUND] {file} in {model.modelId}")
         except:
             pass
 
