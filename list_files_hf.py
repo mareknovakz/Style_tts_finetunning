@@ -9,6 +9,15 @@ for repo in repos:
     try:
         # Use list_repo_tree for recursive listing
         for f in api.list_repo_tree(repo, recursive=True):
-            print(f.rfilename)
+            if hasattr(f, 'path'):
+                print(f.path)
+            elif hasattr(f, 'rfilename'):
+                print(f.rfilename)
+            else:
+                # Fallback for older versions or different objects
+                try:
+                    print(f.name)
+                except:
+                    print(str(f))
     except Exception as e:
         print(f"Error listing {repo}: {e}")
