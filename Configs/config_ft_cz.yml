@@ -15,13 +15,17 @@ preprocess_params:
 
 model_params:
   multispeaker: true
-  dim_in: 64
+  dim_in: 64 
   hidden_dim: 512
-  n_layer: 6
+  max_conv_dim: 512
+  n_layer: 6 
   n_mels: 80
+  n_token: 178 # number of phoneme tokens
+  max_dur: 50 # maximum duration of a single phoneme
+  style_dim: 128 # style vector size
+  dropout: 0.2
   n_style_adv: 4
-  
-  # config for decoder
+
   decoder: 
       type: 'istftnet' # either hifigan or istftnet
       resblock_kernel_sizes: [3,7,11]
@@ -32,7 +36,6 @@ model_params:
       gen_istft_n_fft: 20
       gen_istft_hop_size: 5
       
-  # speech language model config
   slm:
       model: 'microsoft/wavlm-base-plus'
       sr: 16000 # sampling rate of SLM
@@ -40,20 +43,16 @@ model_params:
       nlayers: 13 # number of layers of SLM
       initial_channel: 64 # initial channels of SLM discriminator head
   
-  # style diffusion model config
   diffusion:
     embedding_mask_proba: 0.1
-    # transformer config
     transformer:
       num_layers: 3
       num_heads: 8
       head_features: 64
       multiplier: 2
-
-    # diffusion distribution config
     dist:
-      sigma_data: 0.2 # placeholder for estimate_sigma_data set to false
-      estimate_sigma_data: true # estimate sigma_data from the current batch if set to true
+      sigma_data: 0.2 
+      estimate_sigma_data: true
       mean: -3.0
       std: 1.0
 
@@ -69,6 +68,7 @@ loss_params:
     lambda_sty: 1.0 # style reconstruction loss
     lambda_diff: 1.0 # diffusion loss
     lambda_kl: 1.0 # KL divergence loss
+    lambda_ce: 20.0 # CE loss
     
     diff_epoch: 0
     joint_epoch: 0
