@@ -1,10 +1,10 @@
 log_dir: "Models/FT_CZ"
-save_freq: 1
+save_freq: 2
 log_interval: 10
 device: "cuda"
-epochs: 50
-batch_size: 4
-max_len: 200 # maximum number of frames
+epochs: 100
+batch_size: 16 # Total batch size for 2x A40
+max_len: 400 # Increased for longer segments if needed
 
 preprocess_params:
   sr: 24000
