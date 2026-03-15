@@ -1,9 +1,9 @@
 log_dir: "Models/FT_CZ"
 save_freq: 2
 log_interval: 10
-device: "cuda"
+device: "cpu"
 epochs: 100
-batch_size: 16 # Total batch size for 2x A40
+batch_size: 1 # Set to 1 for CPU testing
 max_len: 400 # Increased for longer segments if needed
 
 preprocess_params:
@@ -86,10 +86,10 @@ slmadv_params:
   sig: 1.5
 
 data_params:
-  train_data: "../Data/train_list.txt"
-  val_data: "../Data/val_list.txt"
-  root_path: "../Data/wavs"
-  OOD_data: "../Data/OOD_texts.txt"
+  train_data: "Data/train_list.txt"
+  val_data: "Data/val_list.txt"
+  root_path: "Data/wavs"
+  OOD_data: "Data/OOD_texts.txt"
   min_length: 50 # min length of mel frames
 
 # Pretrained Models
